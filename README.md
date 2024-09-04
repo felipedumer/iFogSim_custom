@@ -41,6 +41,18 @@ iFogSim2 currently encompasses several new usecases such as:
   * Verify the external libraries in the "JARs" Folder are added to the project
   * Run the example files (e.g. TranslationServiceFog_Clustering.java, CrowdSensing_Microservices_RandomMobility_Clustering.java) to get started
 
+* Visual Code:
+  * Install the Extension Pack for Java by Microsoft
+  * Clone the iFogSim2 repository:
+  ```
+  git clone https://github.com/Cloudslab/iFogSim
+  ```
+  * Open the iFogSim2 folder in Visual Code
+  ```
+  code iFogSim
+  ```
+  * Verify the external libraries in the "JARs" Folder are added to the project
+  * Run the example files (e.g. TranslationServiceFog_Clustering.java, CrowdSensing_Microservices_RandomMobility_Clustering.java) to get started
 
 # References
  * Redowan Mahmud, Samodha Pallewatta, Mohammad Goudarzi, and Rajkumar Buyya, <A href="https://arxiv.org/abs/2109.05636">iFogSim2: An Extended iFogSim Simulator for Mobility, Clustering, and Microservice Management in Edge and Fog Computing Environments</A>, Journal of Systems and Software (JSS), Volume 190, Pages: 1-17, ISSN:0164-1212, Elsevier Press, Amsterdam, The Netherlands, August 2022.
