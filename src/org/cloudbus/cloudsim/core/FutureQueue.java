@@ -39,6 +39,7 @@ public class FutureQueue {
 	public void addEvent(SimEvent newEvent) {
 		newEvent.setSerial(serial++);
 		sortedSet.add(newEvent);
+		System.out.println("Event added: " + newEvent);
 	}
 
 	/**

@@ -71,8 +71,8 @@ public class TwoApps {
 			
 			Application application0 = createApplication0(appId0, broker0.getId());
 			Application application1 = createApplication1(appId1, broker1.getId());
-			application0.setUserId(broker0.getId());
-			application1.setUserId(broker1.getId());
+			// application0.setUserId(broker0.getId());
+			// application1.setUserId(broker1.getId());
 			
 			createFogDevices();
 			
@@ -150,7 +150,7 @@ public class TwoApps {
 		cloud.setParentId(-1);
 		FogDevice proxy = createFogDevice("proxy-server", 2800, 4000, 10000, 10000, 1, 0.0, 107.339, 83.4333); // creates the fog device Proxy Server (level=1)
 		proxy.setParentId(cloud.getId()); // setting Cloud as parent of the Proxy Server
-		proxy.setUplinkLatency(100); // latency of connection from Proxy Server to the Cloud is 100 ms
+		proxy.setUplinkLatency(1000); // latency of connection from Proxy Server to the Cloud is 100 ms
 		
 		fogDevices.add(cloud);
 		fogDevices.add(proxy);
@@ -162,22 +162,22 @@ public class TwoApps {
 	}
 
 	private static FogDevice addGw(String id, int parentId){
-		FogDevice dept = createFogDevice("d-"+id, 2800, 4000, 10000, 10000, 1, 0.0, 107.339, 83.4333);
+		FogDevice dept = createFogDevice("gateway-"+id, 2800, 4000, 10000, 10000, 1, 0.0, 107.339, 83.4333);
 		fogDevices.add(dept);
 		dept.setParentId(parentId);
-		dept.setUplinkLatency(4); // latency of connection between gateways and proxy server is 4 ms
+		dept.setUplinkLatency(40); // latency of connection between gateways and proxy server is 4 ms
 		for(int i=0;i<numOfMobilesPerDept;i++){
 			String mobileId = id+"-"+i;
 			FogDevice mobile = addMobile(mobileId, dept.getId()); // adding mobiles to the physical topology. Smartphones have been modeled as fog devices as well.
 			
-			mobile.setUplinkLatency(2); // latency of connection between the smartphone and proxy server is 4 ms
+			mobile.setUplinkLatency(20); // latency of connection between the smartphone and proxy server is 4 ms
 			fogDevices.add(mobile);
 		}
 		return dept;
 	}
 	
 	private static FogDevice addMobile(String id, int parentId){
-		FogDevice mobile = createFogDevice("m-"+id, 1000, 1000, 10000, 270, 3, 0, 87.53, 82.44);
+		FogDevice mobile = createFogDevice("mobile-"+id, 1000, 1000, 10000, 270, 3, 0, 87.53, 82.44);
 		mobile.setParentId(parentId);
 		mobiles.add(mobile);
 		/*Sensor eegSensor = new Sensor("s-"+id, "EEG", userId, appId, new DeterministicDistribution(EEG_TRANSMISSION_TIME)); // inter-transmission time of EEG sensor follows a deterministic distribution
@@ -232,7 +232,7 @@ public class TwoApps {
 		String arch = "x86"; // system architecture
 		String os = "Linux"; // operating system
 		String vmm = "Xen";
-		double time_zone = 10.0; // time zone this resource located
+		double time_zone = -3.0; // time zone this resource located
 		double cost = 3.0; // the cost of using processing in this resource
 		double costPerMem = 0.05; // the cost of using memory in this resource
 		double costPerStorage = 0.001; // the cost of using storage in this
